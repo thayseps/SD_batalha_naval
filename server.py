@@ -43,7 +43,7 @@ def posicionandoNavios(idJogador):
     while len(jogadores[idJogador][jogador].navios) < totalNavios:
         b = jogadores[idJogador][socket].recv(tamanhoResposta)
         linha, coluna, navio = pickle.loads(b)
-        posicaoValida = jogadores[idJogador][jogador].posicionarNavio(linha, coluna, navio.direcao, navio.tamanho)
+        posicaoValida = jogadores[idJogador][jogador].posicionarNavio(linha, coluna, navio.orientacao, navio.tamanho)
         if posicaoValida:
             jogadores[idJogador][jogador].navios.append(navio)
 

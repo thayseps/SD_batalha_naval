@@ -1,5 +1,5 @@
 class Embarcacao:
-    def __init__(self, nome, tamanho, direcao):
-        self.nome = nome
+    def __init__(self, tipo, tamanho, orientacao):
+        self.tipo = tipo
         self.tamanho = tamanho
-        self.direcao = direcao
+        self.orientacao = orientacao

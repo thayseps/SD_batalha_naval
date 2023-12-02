@@ -17,7 +17,7 @@ tamanhoResposta = 4096
 msgSuaVez = "Sua vez de jogar"
 msgTurnoOp = "Turno do oponente"
 
-embarcacoes = {0: Embarcacao('Porta-Avião', 5, None), 1: Embarcacao('Navio-Tanque', 4, None), 2: Embarcacao('Fragata', 4, None), 3: Embarcacao('Contra Torpedeiro', 3, None), 4: Embarcacao('Contra Torpedeiro', 3, None), 5: Embarcacao('Contra Torpedeiro', 3, None), 6: Embarcacao('Submarino', 2, None), 7: Embarcacao('Submarino', 2, None), 8: Embarcacao('Submarino', 2, None), 9: Embarcacao('Submarino', 2, None)}
+embarcacoes = {0: Embarcacao('\033[37mPorta-Avião\033[m', 5, None), 1: Embarcacao('\033[32mNavio-Tanque\033[m', 4, None), 2: Embarcacao('\033[31mFragata\033[m', 4, None), 3: Embarcacao('Contra Torpedeiro', 3, None), 4: Embarcacao('Contra Torpedeiro', 3, None), 5: Embarcacao('Contra Torpedeiro', 3, None), 6: Embarcacao('Submarino', 2, None), 7: Embarcacao('Submarino', 2, None), 8: Embarcacao('Submarino', 2, None), 9: Embarcacao('Submarino', 2, None)}
 
 def tabuleiro():
     print("   ", " ".join([str(a) for a in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]))
@@ -67,10 +67,10 @@ def validarTamanho(entrada, tamanho):
     return (entrada + tamanho) <= 9
 
 def posicionarEmbarcacao(embarcacao):
-    print("O barco ", embarcacao.nome, " de tamanho ", embarcacao.tamanho, " deve ser posicionado no campo de batalha")
+    print("A embarcação ", embarcacao.tipo, " de tamanho ", embarcacao.tamanho, " deve ser posicionada no tabuleiro")
     while True:
-        embarcacao.direcao = input("Escolha a orientação da embarcação Vertical(v), Horizontal(h): ")
-        if embarcacao.direcao in ['v', 'h']:
+        embarcacao.orientacao = input("Escolha a orientação da embarcação Vertical(v), Horizontal(h): ")
+        if embarcacao.orientacao in ['v', 'h']:
             break
         else:
             print('Entrada incorreta tente novamente.')
@@ -79,7 +79,7 @@ def posicionarEmbarcacao(embarcacao):
             linha = int(input("Insira a linha em que deseja posicionar sua embarcação[0 - 9]: "))
         except ValueError:
             linha = 99
-        if validarEntrada(linha) and (embarcacao.direcao == 'h' or (embarcacao.direcao == 'v' and validarTamanho(linha, embarcacao.tamanho))):
+        if validarEntrada(linha) and (embarcacao.orientacao == 'h' or (embarcacao.orientacao == 'v' and validarTamanho(linha, embarcacao.tamanho))):
             break
         else:
             print('Entrada incorreta tente novamente.')
@@ -88,7 +88,7 @@ def posicionarEmbarcacao(embarcacao):
             coluna = int(input("Insira a coluna em que deseja posicionar sua embarcação[0 - 9]: "))
         except ValueError:
             coluna = 99        
-        if validarEntrada(coluna) and (embarcacao.direcao == 'v' or (embarcacao.direcao == 'h' and validarTamanho(coluna, embarcacao.tamanho))):
+        if validarEntrada(coluna) and (embarcacao.orientacao == 'v' or (embarcacao.orientacao == 'h' and validarTamanho(coluna, embarcacao.tamanho))):
             break
         else:
             print('Entrada incorreta tente novamente.')
@@ -112,7 +112,7 @@ for i in range(0, 3):
         if posicaoValida:
             break
         else:
-            print('Já existe um barco posicionado na posição: ' + '['+str(posicao[0])+']' + '[' +str(posicao[1])+']')
+            print('Há uma embarcação posicionado na posição: ' + '['+str(posicao[0])+']' + '[' +str(posicao[1])+']')
         
 ReceberEPrintarMensagem()
 ReceberEPrintarMensagem()

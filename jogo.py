@@ -16,8 +16,8 @@ class Jogo:
         else:
             return False
 
-    def posicionarNavio(self, linha, coluna, direcao, tamanho):
-        if(direcao == 'h'):
+    def posicionarNavio(self, linha, coluna, orientacao, tamanho):
+        if(orientacao == 'h'):
             if(coluna + tamanho > 9):
                 return False
             while tamanho > 0:
